@@ -1,0 +1,20 @@
+---
+- name: flaskapp
+  hosts: g1
+  become: yes
+
+  tasks:
+    - name: install python
+      yum: 
+        name: python3
+        state: present
+      
+    - name: install git
+      yum: 
+        name: git
+        state: present
+
+    - name: install pip
+      yum: 
+        name: pip
+        state: present
