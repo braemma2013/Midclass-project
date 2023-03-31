@@ -1,6 +1,6 @@
 ---
 - name: Deploy Flask application
-  hosts: webserver
+  hosts: n1
   become: yes
   tasks:
     - name: Install required packages
@@ -10,7 +10,7 @@
 
     - name: Clone repository
       git:
-        repo: https://github.com/user/flask-app.git
+        repo: https://github.com/braemma2013/Midclass-project.git
         dest: /var/www/flask-app
         clone: yes
         
