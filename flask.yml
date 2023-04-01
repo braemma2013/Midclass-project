@@ -15,23 +15,23 @@
       - git
 
     - name: virtual enviroment
-      command: python3 -m venv /opt/app/env 
+      command: python3 -m venv /opt/app2.0/env 
 
     - name: we activate the environment
-      command: /bin/bash -c "source /opt/app/env/bin/activate"
+      command: /bin/bash -c "source /opt/app2.0/env/bin/activate"
 
 
     - name: Clone repository
       git:
         repo: https://github.com/Morjay007/Midclass-project.git
-        dest: /opt/app
+        dest: /opt/app2.0
         clone: yes
       
 
     - name: install Flask application
       pip: 
         name: flask
-        chdir: /opt/app/env/bin/pip
+        chdir: /opt/app2.0/env/bin/pip
        
       
 ... 
