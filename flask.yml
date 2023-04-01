@@ -56,10 +56,6 @@
       #environment:
        # FLASK_APP: /opt/app2.0/Flask_web_app.py
 
-    - name: Install nodejs
-      shell:  |
-        curl -sL https://rpm.nodesource.com/setup_16.x | sudo bash -
-        sudo apt install nodejs
     - name: Install PM2
       shell: sudo npm install pm2@latest -g
     - name: check if flask app runs 
