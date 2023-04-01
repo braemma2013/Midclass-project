@@ -40,7 +40,7 @@
    
     - name: Change ssh port to 5000
       set_fact:
-      ansible_port: 5000
+        ansible_port: 5000
 
     - name: restart ufw
       systemd:
