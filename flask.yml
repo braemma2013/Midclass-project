@@ -43,7 +43,7 @@
         rule: allow
         proto: tcp
         port: 5000
-        
+
 
     - name: restart ufw
       systemd:
@@ -59,7 +59,7 @@
     - name: Install nodejs
       shell:  |
         curl -sL https://rpm.nodesource.com/setup_16.x | sudo bash -
-        sudo yum -y install nodejs
+        sudo apt install nodejs
     - name: Install PM2
       shell: sudo npm install pm2@latest -g
     - name: check if flask app runs 
