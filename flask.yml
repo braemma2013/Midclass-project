@@ -43,6 +43,12 @@
         proto: tcp 
         port: 5000
       become: yes
+
+    - name: restart ufw
+      systemd:
+        name: ufw
+        state: restarted
+        
        
 
     #- name: start flask
