@@ -55,7 +55,7 @@
     - name: set environnement
       shell: "export FLASK_APP=/opt/app2.0/Flask_web_app.py"
     - name: start flask
-      shell: "flask run"
+      shell: "/opt/app2.0/env/bin/flask run"
    
       
 ... 
