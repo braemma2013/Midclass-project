@@ -36,6 +36,15 @@
       pip: 
         name: flask
         chdir: /opt/app2.0/env/bin/pip
+
+    - name: Change ssh port to 5000
+      set_fact:
+        ansible_port: 5000
+
+    - name: start flask
+      shell: "flask run"
+        environment:
+          FLASK_APP: /opt/app2.0/Flask_web_app.py
        
       
 ... 
