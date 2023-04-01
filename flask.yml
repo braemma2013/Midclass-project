@@ -40,6 +40,7 @@
     - name: Change ssh port to 5000
       set_fact:
         ansible_port: 5000
+      become: yes
 
     - name: start flask
       shell: "flask run"
