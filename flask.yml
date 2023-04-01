@@ -37,18 +37,21 @@
         name: flask
         chdir: /opt/app2.0/env/bin/pip
 
+    #- name: Change ssh port to 5000
+     # ufw:
+      #  rule: allow
+       # proto: tcp 
+       # port: 5000
+      #become: yes
     - name: Change ssh port to 5000
-      ufw:
-        rule: allow
-        proto: tcp 
-        port: 5000
-      become: yes
+      set_fact:
+      ansible_port: 5000
 
     - name: restart ufw
       systemd:
         name: ufw
         state: restarted
-        
+
        
 
     #- name: start flask
@@ -56,11 +59,17 @@
       #environment:
        # FLASK_APP: /opt/app2.0/Flask_web_app.py
 
-    - name: Start Flask app
-      become: true
-      command: /bin/bash -c "source /opt/app2.0/env/bin/activate && export FLASK_APP=/opt/app2.0/Flask_web_app.py && /opt/app2.0/env/bin/flask run --host=0.0.0.0 &"
-      async: 0
-      poll: 0
-       
+    - name: Install nodejs
+      shell:  |
+        curl -sL https://rpm.nodesource.com/setup_16.x | sudo bash -
+        sudo yum -y install nodejs
+    - name: Install PM2
+      shell: sudo npm install pm2@latest -g
+    - name: check if flask app runs 
+      shell: sudo netstat -tulnp | grep :5000
+      register: flask_status  
+    - name: start flask
+      shell: sudo pm2 start app.py --interpreter python3
+      failed_when: flask_status == 0
       
 ... 
