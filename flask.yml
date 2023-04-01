@@ -25,11 +25,8 @@
       git:
         repo: https://github.com/Morjay007/Midclass-project.git
         dest: /opt/app2.0
-        clone: yes
-
-
-      
-      
+        clone: no
+        
     - name: copy app.py to app2.0 so it can be excuted
       copy:
         src: app.py
