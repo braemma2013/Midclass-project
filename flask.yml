@@ -50,19 +50,12 @@
         name: ufw
         state: restarted
  
-
-    #- name: start flask
-     # shell: "flask run"
-      #environment:
-       # FLASK_APP: /opt/app2.0/Flask_web_app.py
-
-    - name: Install PM2
-      shell: sudo npm install pm2@latest -g
-    - name: check if flask app runs 
-      shell: sudo netstat -tulnp | grep :5000
-      register: flask_status  
+    - name: install flask with pip
+      pip: name=flask
+    - name: set environnement
+      shell: "export FLASK_APP=/var/www/main.py"
     - name: start flask
-      shell: sudo pm2 start app.py --interpreter python3
-      failed_when: flask_status == 0
+      shell: "flask run"
+   
       
 ... 
