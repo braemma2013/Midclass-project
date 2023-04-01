@@ -27,9 +27,9 @@
         dest: /opt/app2.0
         clone: no
         
-    - name: copy app.py to app2.0 so it can be excuted
+    - name: copy flask app.py to app2.0 so it can be excuted
       copy:
-        src: app.py
+        src: flask_web_app.py
         dest: /opt/app2.0
 
     - name: install Flask application
