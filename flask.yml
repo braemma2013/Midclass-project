@@ -18,7 +18,7 @@
       command: python3 -m venv /opt/app/env 
 
     - name: we activate the environment
-      command:  "source /opt/app/env/bin/activate"
+      command: /bin/bash -c "source /opt/app/env/bin/activate"
 
 
     - name: Clone repository
