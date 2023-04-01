@@ -38,8 +38,10 @@
         chdir: /opt/app2.0/env/bin/pip
 
     - name: Change ssh port to 5000
-      set_fact:
-        ansible_port: 5000
+      ufw:
+        rule: allow
+        proto: tcp 
+        port: 5000
       become: yes
 
     - name: start flask
