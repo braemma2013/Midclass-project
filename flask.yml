@@ -43,8 +43,8 @@
 
     - name: start flask
       shell: "flask run"
-        environment:
-          FLASK_APP: /opt/app2.0/Flask_web_app.py
+      environment:
+        FLASK_APP: /opt/app2.0/Flask_web_app.py
        
       
 ... 
