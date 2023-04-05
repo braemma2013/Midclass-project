@@ -50,8 +50,7 @@
         name: ufw
         state: restarted
  
-    - name: install flask with pip
-      pip: name=flask
+   
     - name: set environnement
       shell: "export FLASK_APP=/opt/app2.0/Flask_web_app.py"
     - name: start flask
