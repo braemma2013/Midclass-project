@@ -1,31 +1,20 @@
 pipeline {
     agent any
-    environment {
-        FLASK_APP = 'Flask_web_app.py'
-    }
-    tools {
-        git 'Default'
-    }
+    
+    
     stages {
-        stage('Clone Repository') {
+        stage('Checkout') {
             steps {
-              git branch: 'main', credentialsId: '25ccef62-d1ea-4da4-812b-980dfbca4119', url: 'https://github.com/braemma2013/Midclass-project.git'
-            }
-        }
-        
-        stage('Install Packages') {
-           steps {
-             sh 'virtualenv venv'
-             sh 'source venv/bin/activate && pip install flask'
-             sh 'chmod -R 755 venv'
+              checkout scmGit(branches: [[name: '*/main']], extensions: [cleanBeforeCheckout()], userRemoteConfigs: [[credentialsId: '25ccef62-d1ea-4da4-812b-980dfbca4119', url: 'https://github.com/braemma2013/Midclass-project.git']])
             }
         }
         
         stage('Build') {
             steps {
-              sh 'echo "Building app"'
+              git branch: 'main', credentialsId: '25ccef62-d1ea-4da4-812b-980dfbca4119', url: 'https://github.com/braemma2013/Midclass-project.git'
             }
         }
+        
         
         stage('post build') {
             steps {
