@@ -46,9 +46,10 @@
 
 
     - name: set environnement
-      shell: "export FLASK_APP=/opt/app2.0/Flask_web_app.py"
-    - name: start flask
-      shell: "/opt/app2.0/env/bin/flask run"
+      shell: |
+           source /opt/flask-app/env/bin/activate
+           export FLASK_APP=/opt/flask-app/app.py
+           /opt/flask-app/env/bin/flask run --host=http://0.0.0.0/0 &
 
     - name: restart ufw
       systemd:
