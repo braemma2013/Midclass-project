@@ -4,7 +4,7 @@ pipeline {
         FLASK_APP = 'Flask_web_app.py'
     }
     tools {
-        git 'default'
+        git 'Default'
     }
     stages {
         stage('Clone Repository') {
