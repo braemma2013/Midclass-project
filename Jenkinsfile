@@ -19,12 +19,21 @@ pipeline {
                sh 'source venv/bin/activate && pip install flask'
                sh 'chmod -R 755 venv'
             }
-      
+        }
+        
+        stage('Build') {
+            steps {
+              sh'echo 'Building app'
+            }
+        }
+        
+        stage('post build') {
+            steps {
+              ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts.ini', playbook: 'flask.yml'
             }
         }
     }
- 
-}
+ }
 
 
 
