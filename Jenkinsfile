@@ -23,7 +23,7 @@ pipeline {
         
         stage('Build') {
             steps {
-              sh'echo 'Building app'
+              sh 'echo "Building app"'
             }
         }
         
