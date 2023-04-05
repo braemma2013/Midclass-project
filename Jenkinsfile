@@ -29,7 +29,7 @@ pipeline {
         
         stage('post build') {
             steps {
-              ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts.ini', playbook: 'flask.yml'
+              ansiblePlaybook become: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts.ini', playbook: 'flask.yml'
             }
         }
     }
