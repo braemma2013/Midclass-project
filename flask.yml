@@ -45,16 +45,14 @@
         port: 5000
 
 
+    - name: set environnement
+      shell: "export FLASK_APP=/opt/app2.0/Flask_web_app.py"
+    - name: start flask
+      shell: "/opt/app2.0/env/bin/flask run"
+
     - name: restart ufw
       systemd:
         name: ufw
         state: restarted
  
-   
-    - name: set environnement
-      shell: "export FLASK_APP=/opt/app2.0/Flask_web_app.py"
-    - name: start flask
-      shell: "/opt/app2.0/env/bin/flask run"
-   
-      
 ... 
