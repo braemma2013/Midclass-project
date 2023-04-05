@@ -13,11 +13,11 @@ pipeline {
             }
         }
         
-        stage('Install packages') {
-            steps {
-               sh 'venv'
-               sh 'source venv/bin/activate && pip install flask'
-               sh 'chmod -R 755 venv'
+        stage('Install Packages') {
+           steps {
+             sh 'virtualenv venv'
+             sh 'source venv/bin/activate && pip install flask'
+             sh 'chmod -R 755 venv'
             }
         }
         
