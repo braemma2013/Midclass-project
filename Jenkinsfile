@@ -1,15 +1,25 @@
 pipeline {
     agent any
+    environment {
+        FLASK_APP = 'Flask_web_app.py'
+    }
+    tools {
+        git 'default'
+    }
     stages {
-        stage('Checkout') {
+        stage('Clone Repository') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/braemma2013/Midclass-project.git']]])
+              git branch: 'main', credentialsId: '25ccef62-d1ea-4da4-812b-980dfbca4119', url: 'https://github.com/braemma2013/Midclass-project.git'
             }
         }
         
-        stage('Starting Ansible') {
+        stage('Install packages') {
             steps {
-      ansiblePlaybook become: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts.ini', playbook: 'flask.yml'
+               sh 'virtualenv venv'
+               sh 'source venv/bin/activate && pip install flask'
+               sh 'chmod -R 755 venv'
+            }
+      
             }
         }
     }
