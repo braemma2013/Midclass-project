@@ -11,6 +11,7 @@ pipeline {
         
         stage('Build') {
             steps {
+              sh 'pip install flask'  
               sh 'python3 Flask_web_app.py'
             }
         }
