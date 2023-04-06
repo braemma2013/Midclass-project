@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-              checkout scmGit(branches: [[name: '*/main']], extensions: [cleanBeforeCheckout()], userRemoteConfigs: [[credentialsId: '25ccef62-d1ea-4da4-812b-980dfbca4119', url: 'https://github.com/braemma2013/Midclass-project.git']])
+              checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/braemma2013/Midclass-project.git']])
             }
         }
         
